@@ -21,20 +21,31 @@ body {
 }
 
 main {
-    max-width: 560px;
+    max-width: 520px;
     width: 100%;
-}
-
-pre {
-    font-family: inherit;
-    font-size: 1rem;
-    color: #888;
-    overflow: hidden;
-    user-select: none;
+    border: 1px solid #888;
 }
 
 header {
-    padding: 1.5rem 1.5rem 1rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #888;
+}
+
+.header-text {
+    text-align: left;
+}
+
+.headshot {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: grayscale(100%);
+    flex-shrink: 0;
 }
 
 h1 {
@@ -50,7 +61,8 @@ h1 {
 }
 
 .about {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #888;
 }
 
 .about p {
@@ -91,7 +103,7 @@ a:hover {
 }
 
 footer {
-    padding: 1rem 1.5rem;
+    padding: 1.25rem 1.5rem;
 }
 
 footer a {
@@ -105,11 +117,20 @@ footer a {
 }
 
 @media (max-width: 600px) {
-    pre {
-        font-size: 0.7rem;
-    }
-
     main {
         max-width: 100%;
+    }
+
+    header {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .header-text {
+        text-align: center;
+    }
+
+    .headshot {
+        margin-bottom: 1rem;
     }
 }
