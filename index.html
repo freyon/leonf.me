@@ -13,6 +13,7 @@
 	  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>Leon S. Freyermuth</title>
 
     <meta name="description" content="Leon S. Freyermuth is an associate attorney at Gibson Dunn practicing in the firm's AI, Privacy, Cybersecurity, and Data Innovation groups.">
@@ -58,9 +59,55 @@
         </section>
 
         <footer>
-            <span class="prompt">&gt;</span> <a href="https://www.linkedin.com/in/leon-freyermuth-99710584/">linkedin</a>
-            <span class="prompt">&gt;</span> <a href="https://www.gibsondunn.com/lawyer/freyermuth-leon-s-g/">gibson dunn</a>
+            <div class="links">
+                <span class="prompt">&gt;</span> <a href="https://www.linkedin.com/in/leon-freyermuth-99710584/">linkedin</a>
+                <span class="prompt">&gt;</span> <a href="https://www.gibsondunn.com/lawyer/freyermuth-leon-s-g/">gibson dunn</a>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                [mode]
+            </button>
         </footer>
     </main>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+
+        // Check for saved preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                root.setAttribute('data-theme', 'dark');
+            } else if (theme === 'light') {
+                root.setAttribute('data-theme', 'light');
+            } else {
+                root.removeAttribute('data-theme');
+            }
+        }
+
+        // Apply saved theme or default
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+
+        toggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            let newTheme;
+
+            if (currentTheme === 'dark') {
+                newTheme = 'light';
+            } else if (currentTheme === 'light') {
+                newTheme = 'dark';
+            } else {
+                // If no manual theme set, toggle based on system
+                newTheme = systemDark.matches ? 'light' : 'dark';
+            }
+
+            setTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html>
