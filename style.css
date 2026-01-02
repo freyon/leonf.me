@@ -134,3 +134,59 @@ footer a {
         margin-bottom: 1rem;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color: #ffffff;
+        background-color: #0a0a0a;
+    }
+
+    main {
+        border-color: #555;
+    }
+
+    header {
+        border-bottom-color: #555;
+    }
+
+    h1 {
+        color: #ffffff;
+    }
+
+    .subtitle {
+        color: #bbb;
+    }
+
+    .about {
+        border-bottom-color: #555;
+    }
+
+    .about p {
+        color: #e0e0e0;
+    }
+
+    .about ul {
+        color: #e0e0e0;
+    }
+
+    .about li::before {
+        color: #888;
+    }
+
+    a {
+        color: #ffffff;
+        border-bottom-color: #888;
+    }
+
+    a:hover {
+        border-bottom-color: #ffffff;
+    }
+
+    .prompt {
+        color: #888;
+    }
+
+    .headshot {
+        filter: grayscale(100%) brightness(0.9);
+    }
+}
