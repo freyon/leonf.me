@@ -1,3 +1,14 @@
+:root {
+    --bg: #f6f7f5;
+    --panel: #fbfbf9;
+    --text: #1b1b19;
+    --muted: #62645f;
+    --quiet: #8a8d86;
+    --rule: #7f827a;
+    --rule-soft: #d5d8d0;
+    --accent: #4f6168;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,39 +19,70 @@ html {
     font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
     font-size: 15px;
     line-height: 1.7;
-    color: #1a1a1a;
-    background-color: #fafafa;
+    color: var(--text);
+    background-color: var(--bg);
 }
 
 body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 2rem;
+    align-items: flex-start;
+    padding: 4rem 1.5rem;
 }
 
-main {
-    max-width: 520px;
+.site-card {
     width: 100%;
-    border: 1px solid #888;
+    max-width: 760px;
+    border: 1px solid var(--rule);
+    background-color: var(--panel);
 }
 
-header {
-    padding: 1.5rem;
+.status-line {
+    min-height: 2.7rem;
+    padding: 0.75rem 1rem;
     display: flex;
-    justify-content: space-between;
+    gap: 0.65rem;
     align-items: center;
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid var(--rule);
+    color: var(--quiet);
+    font-size: 0.75rem;
+    line-height: 1.2;
+    text-transform: lowercase;
+}
+
+.status-spacer {
+    height: 1px;
+    flex: 1;
+    background-color: var(--rule-soft);
+}
+
+.site-header {
+    padding: 2.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+    border-bottom: 1px solid var(--rule);
 }
 
 .header-text {
+    max-width: 32rem;
     text-align: left;
 }
 
+.eyebrow {
+    margin-bottom: 0.55rem;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
 .headshot {
-    width: 90px;
-    height: 90px;
+    width: 108px;
+    height: 108px;
+    border: 1px solid var(--rule);
     border-radius: 50%;
     object-fit: cover;
     object-position: center 20%;
@@ -49,144 +91,187 @@ header {
 }
 
 h1 {
-    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+    font-size: 1.55rem;
     font-weight: 500;
-    letter-spacing: 0.02em;
-    margin-bottom: 0.25rem;
+    line-height: 1.25;
+}
+
+h2 {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
 }
 
 .subtitle {
+    color: var(--muted);
     font-size: 0.9rem;
-    color: #666;
 }
 
-.about {
-    padding: 1.5rem;
-    border-bottom: 1px solid #888;
+.intro,
+.detail-section {
+    padding: 1.8rem 2.25rem;
 }
 
-.about p {
-    font-size: 0.9rem;
-    color: #333;
-    margin-bottom: 1rem;
+.detail-section {
+    border-top: 1px solid var(--rule-soft);
 }
 
-.about p:last-child {
+.section-label {
+    margin-bottom: 0.9rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+}
+
+.section-label span {
+    color: var(--quiet);
+    font-size: 0.75rem;
+}
+
+.intro p,
+.detail-section p {
+    max-width: 38rem;
+    color: var(--text);
+    font-size: 0.92rem;
+}
+
+.work-list {
+    max-width: 40rem;
+    list-style: none;
+    color: var(--text);
+    font-size: 0.92rem;
+}
+
+.work-list li {
+    position: relative;
+    padding-left: 1.15rem;
+    margin-bottom: 0.45rem;
+}
+
+.work-list li:last-child {
     margin-bottom: 0;
 }
 
-.about ul {
-    list-style: none;
-    margin: 0.75rem 0 1rem;
-    padding-left: 1rem;
-    font-size: 0.9rem;
-    color: #333;
-}
-
-.about li {
-    margin-bottom: 0.25rem;
-}
-
-.about li::before {
-    content: "- ";
-    color: #888;
+.work-list li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: var(--quiet);
 }
 
 a {
-    color: #1a1a1a;
+    color: var(--text);
     text-decoration: none;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid var(--quiet);
 }
 
 a:hover {
-    border-bottom-color: #1a1a1a;
+    border-bottom-color: var(--text);
+}
+
+a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 0.2rem;
 }
 
 footer {
-    padding: 1.25rem 1.5rem;
+    padding: 1.25rem 2.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.6rem;
+    border-top: 1px solid var(--rule);
 }
 
 footer a {
-    margin-right: 1.5rem;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+}
+
+.footer-link {
+    display: inline-flex;
+    gap: 0.35rem;
+    align-items: baseline;
 }
 
 .prompt {
-    color: #888;
-    margin-right: 0.25rem;
+    color: var(--quiet);
 }
 
 @media (max-width: 600px) {
-    main {
-        max-width: 100%;
+    body {
+        padding: 1rem;
     }
 
-    header {
-        flex-direction: column-reverse;
+    .status-line {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .status-spacer {
+        display: none;
+    }
+
+    .site-header {
+        padding: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
         text-align: center;
     }
 
     .header-text {
+        max-width: none;
+        grid-row: 2;
         text-align: center;
     }
 
     .headshot {
-        margin-bottom: 1rem;
+        grid-row: 1;
+        justify-self: center;
+        width: 96px;
+        height: 96px;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    .intro,
+    .detail-section {
+        padding: 1.35rem 1.5rem;
+    }
+
+    .section-label {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .intro p,
+    .detail-section p,
+    .work-list {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        padding: 1.2rem 1.5rem;
+        justify-content: center;
     }
 }
 
 @media (prefers-color-scheme: dark) {
-    html {
-        color: #ffffff;
-        background-color: #0a0a0a;
-    }
-
-    main {
-        border-color: #555;
-    }
-
-    header {
-        border-bottom-color: #555;
-    }
-
-    h1 {
-        color: #ffffff;
-    }
-
-    .subtitle {
-        color: #bbb;
-    }
-
-    .about {
-        border-bottom-color: #555;
-    }
-
-    .about p {
-        color: #e0e0e0;
-    }
-
-    .about ul {
-        color: #e0e0e0;
-    }
-
-    .about li::before {
-        color: #888;
-    }
-
-    a {
-        color: #ffffff;
-        border-bottom-color: #888;
-    }
-
-    a:hover {
-        border-bottom-color: #ffffff;
-    }
-
-    .prompt {
-        color: #888;
+    :root {
+        --bg: #0d0d0c;
+        --panel: #151514;
+        --text: #f1f1ec;
+        --muted: #b8bbb3;
+        --quiet: #8a8d86;
+        --rule: #5b5f57;
+        --rule-soft: #30332e;
+        --accent: #91a5ad;
     }
 
     .headshot {
-        filter: grayscale(100%) brightness(0.9);
+        filter: grayscale(100%) brightness(0.88);
     }
 }
